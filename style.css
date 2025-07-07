@@ -1,0 +1,540 @@
+/* Color Palette Variables */
+:root {
+  --jungle-green: #2F5D50;
+  --rice-cream: #F9F7F1;
+  --coconut-brown: #7A5C45;
+  --stone-grey: #5F5F5F;
+  --sunlight-yellow: #F4C95D;
+  --white: #FFFFFF; /* Added for logo/nav text */
+  --black-overlay: rgba(0, 0, 0, 0.4); /* For hero image overlay */
+}
+
+/* Base Styles & Typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* For smooth scrolling to sections */
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--stone-grey);
+  background-color: var(--rice-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 90%; /* Mobile-first: start with smaller width */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: var(--jungle-green);
+  font-weight: 700;
+  margin-bottom: 0.8em;
+  line-height: 1.2;
+  font-family: 'Pacifico', cursive;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0.5em;
+  color: var(--white); /* White for hero H1 */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* For readability over image */
+}
+
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1em;
+  font-family: 'Poppins', sans-serif;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6em;
+  font-family: 'Poppins', sans-serif;
+}
+
+p {
+  margin-bottom: 1em;
+  font-size: 1rem;
+}
+
+/* General Section Styling */
+.section-padding {
+  padding: 3rem 0; /* Lots of breathing room */
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.05); /* Subtle separator */
+  margin: 2rem auto;
+  width: 60%; /* Shorter line */
+}
+
+/* Hero Section */
+.hero {
+  /* Hero Image */
+  background: linear-gradient(var(--black-overlay), var(--black-overlay)),
+              url('assets/banner-image.webp') no-repeat center center/cover; /* REPLACE with your image path */
+  position: relative; /* For absolute positioning of navbar */
+  color: var(--white);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+  flex-direction: column;
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 60px;
+  height: 100%;
+  min-height: 400px;
+}
+
+.hero .tagline {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  color: var(--white);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+  position: absolute; /* Position over the hero image */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it's on top of everything */
+  background-color: transparent; /* Transparent background */
+  padding: 1rem 0;
+  transition: background-color 0.3s ease; /* Smooth transition for potential future scroll effects */
+}
+
+/* Nav container for max-width and centering */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%; /* Match body container */
+  margin: 0 auto;
+  padding: 0 1rem; /* Same padding as container */
+}
+
+.logo {
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.logo-image {
+  height: 55px;
+  width: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex; /* Hide on mobile by default, will use JS for toggle */
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+}
+
+.nav-links li a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Subtle hover for transparent nav */
+  color: var(--sunlight-yellow); /* Highlight on hover */
+}
+
+.menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+
+/* Call to Action Buttons */
+.cta-button {
+  display: inline-block;
+  background-color: var(--sunlight-yellow); /* Use yellow for CTA */
+  color: var(--jungle-green);
+  padding: 0.9rem 1.8rem;
+  border-radius: 50px; /* Slightly rounded */
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: 2px solid var(--sunlight-yellow); /* Initial border */
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  max-width: 320px;
+  width: 100%;
+  margin: 1.5rem auto 0 auto;
+}
+
+.cta-button:hover {
+  background-color: var(--jungle-green);
+  color: var(--sunlight-yellow);
+  border-color: var(--sunlight-yellow);
+  transform: translateY(-2px);
+}
+
+.cta-button i {
+  font-size: 1.2em;
+}
+
+.large-cta-button {
+  font-size: 1.1rem;
+  padding: 0.7rem 1.8rem;
+  margin-top: 1.2rem;
+}
+
+/* About Section */
+#about p {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#about .conclusion {
+  font-weight: 600;
+  margin-top: 2rem;
+  font-style: italic;
+  color: var(--coconut-brown);
+}
+
+/* Tour and Testimonial Grids (Mobile-first: single column) */
+.tour-grid, .testimonial-grid {
+  display: grid;
+  gap: 1.5rem;
+  padding-top: 1rem;
+}
+
+.tour-card, .testimonial-card {
+  background-color: white;
+  padding: 1.8rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.tour-card h3 {
+  color: var(--coconut-brown);
+  margin-top: 0;
+}
+
+.testimonial-card p:first-of-type {
+  font-style: italic;
+  margin-bottom: 0.8em;
+  color: var(--jungle-green);
+  font-size: 1.1rem;
+}
+
+.testimonial-card .author {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--stone-grey);
+  margin-bottom: 0;
+}
+
+/* Wayan's Story Section */
+#wayans-story p {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Contact Section */
+.contact-section {
+  text-align: center;
+  background-color: var(--jungle-green);
+  color: var(--rice-cream);
+  padding: 4rem 1rem;
+}
+
+.contact-section h2 {
+  color: var(--rice-cream);
+  margin-bottom: 1em;
+}
+
+.contact-section p {
+  color: var(--rice-cream);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-section .contact-note {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-top: 1.5rem;
+}
+
+/* Footer */
+footer {
+  background-color: var(--coconut-brown);
+  color: var(--rice-cream);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin-bottom: 0.5em;
+  color: var(--rice-cream);
+}
+
+footer i {
+  color: red; /* Heart icon */
+  margin: 0 0.3em;
+}
+
+.tour-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* --- Media Queries for Larger Screens --- */
+@media (max-width: 767px) {
+  .nav-links {
+      display: none; /* Hide nav links on small screens by default */
+      flex-direction: column;
+      background-color: rgba(47, 93, 80, 0.95); /* Semi-transparent jungle green background for mobile menu */
+      position: absolute;
+      top: 100%; /* Position below the navbar */
+      left: 0;
+      width: 100%;
+      padding: 1rem 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      max-height: 0; /* Hidden by default */
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+  }
+
+  .nav-links.active {
+      max-height: 600px; /* Increased to fit all nav links */
+      display: flex;
+  }
+
+  .nav-links li {
+      text-align: center;
+      margin: 0.5rem 0;
+  }
+
+  .nav-links li a {
+      padding: 0.8rem 1rem;
+      display: block;
+      color: var(--white); /* Ensure links are visible */
+  }
+
+  .menu-toggle {
+      display: block; /* Show hamburger icon on mobile */
+  }
+
+  .hero-content {
+      padding-top: 80px; /* Adjust hero content padding for mobile */
+  }
+
+  .navbar {
+      padding: 0.8rem 0; /* Slightly less padding for mobile nav */
+  }
+
+  .nav-container {
+      padding: 0 1rem;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .container {
+      max-width: 760px; /* Tablet size */
+  }
+
+  h1 {
+      font-size: 3.5rem;
+  }
+
+  h2 {
+      font-size: 2.5rem;
+  }
+
+  .hero {
+      min-height: 85vh; /* Keep it tall */
+      padding: 6rem 1rem;
+  }
+
+  .hero-content {
+      padding-top: 0; /* No need for extra padding on larger screens */
+  }
+
+  .navbar {
+      position: fixed; /* Fixed on scroll for larger screens */
+      background-color: transparent;
+      padding: 1.5rem 0;
+  }
+  .navbar.scrolled {
+      background-color: var(--jungle-green); /* Solid background when scrolled */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+
+
+  .tour-grid, .testimonial-grid {
+      grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+  }
+
+  .cta-button {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+  }
+
+  .large-cta-button {
+      font-size: 1.5rem;
+      padding: 1.5rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+      max-width: 960px; /* Desktop size */
+  }
+
+  h1 {
+      font-size: 4rem;
+  }
+
+  h2 {
+      font-size: 3rem;
+  }
+
+  .hero {
+      min-height: 100vh; /* Full height on desktop */
+      padding: 8rem 1rem;
+  }
+
+  .tour-grid {
+      grid-template-columns: repeat(4, 1fr); /* Four columns on desktop */
+  }
+
+  .testimonial-grid {
+      grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+  }
+
+  .section-padding {
+      padding: 5rem 0; /* More breathing room on larger screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+      max-width: 1140px; /* Larger desktop screens */
+  }
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.offer-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.offer-card h3 {
+  color: var(--jungle-green);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.offer-card .price {
+  font-size: 1.4rem;
+  color: var(--sunlight-yellow);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.offer-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.2rem;
+}
+
+.offer-card ul li {
+  margin-bottom: 0.5rem;
+  color: var(--stone-grey);
+  font-size: 1rem;
+}
+
+.offer-cta {
+  margin-top: auto;
+  width: 100%;
+  max-width: 260px;
+  font-size: 1rem;
+  padding: 0.7rem 1.2rem;
+}
+
+@media (min-width: 768px) {
+  .offer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .offer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
